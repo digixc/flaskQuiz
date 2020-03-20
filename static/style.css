@@ -1,0 +1,95 @@
+*
+{
+	margin :0;
+	padding:0;
+
+}
+
+header
+{
+	background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url(background.jpg);
+	background-size:cover;
+	background-position:center;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+ 
+
+}
+
+.logo img
+{
+	width:150px;
+	height:auto;
+	margin-left:0px;
+}
+
+.logo {
+	width: 200px;
+	height: 200px;
+
+}
+
+body
+{
+	background-image: url(background.jpg);
+	background-size:cover;
+	background-position:center;
+	font-family:Roboto;
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+.row
+{
+	max-width:1200px;
+	margin:auto;
+
+}
+.BrightSparks
+{
+	position:absolute;
+	width:1200px;
+	margin-left:0px;
+	margin-top: 0px;
+}
+
+h1
+{
+	color:white;
+	text-transform: :uppercase;
+	font-size:70px;
+	text-align:center;
+	margin-top:275px;
+	font-family: Roboto;
+
+}
+
+.button
+{
+	margin-top: 30px;
+	margin-left:440px;
+}
+
+.btn
+{
+	/*border: 1px solid white;/*/
+	padding: 1px 30px;
+	color:white;
+	text-decoration: none;
+	margin-right: 5px;
+	font-size: 30px;
+	text-transform: uppercase;
+}
+
+.btn-one
+{
+	background-color: darkpurple;
+	font-family: "Roboto",sans-serif;
+}
+
+table{
+	border: 1px;
+	padding: 30px;
+	text-align: center;
+}

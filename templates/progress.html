@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bright Sparks!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<!-- chart.js required -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+ <style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        display: inline;
+
+    }
+    #charts {
+        width: 30%;
+    }
+    </style>
+</head>
+
+
+<body>
+    <h2> You have logged in as: {{ session['loggedinUser'] }} </h2>
+
+    {% for topic in chartData %}
+    <p> Topic : {{ topic }} </p>
+     <p> Topic data: {{ chartData[topic] }} </p>
+    <div id="charts">
+        <canvas id='{{ topic }}' width="200" height="200"></canvas>
+    </div>
+<script>
+    <!-- jsonfy the data from flask  -->
+    var chartDataByTopic = {{ chartData[topic]|tojson }};
+var ctx = document.getElementById('{{ topic }}').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: chartDataByTopic['dates'],
+        datasets: [{
+            label: 'Your Quiz Score Over Time on ' + '{{ topic }}',
+            data: chartDataByTopic['scores'],
+            backgroundColor: chartDataByTopic['backgroundColor'],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+{% endfor %}
+
+</body>
+</html>

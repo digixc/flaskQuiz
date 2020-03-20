@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Bright Sparks!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+
+{% block header %}
+  <h1>{% block title %}Learn the best. Be the best{% endblock %}</h1>
+{% endblock %}
+{% block content %}
+{% if quiz|length %}
+<table> 
+      {% for q in quiz %}
+        <tr>        
+        <td>
+         <form action="/questions" method="POST">
+            <input type="hidden" name="quizID" value={{ q.id }} placeholder="">
+            <input type="submit" value="{{ q.quizname }}">
+      </form>
+</td> 
+        </tr>
+        {% endfor %}
+      </table>
+{% else %}
+<p> No quiz found</p>
+{% endif %}
+
+{% endblock %}
+<a href="{{ url_for('progress') }}" class= "btn btn-one"> Progress Report </a>
+
+
+</html>

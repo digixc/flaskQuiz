@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"> 
+  
+    <head>
+      <link href={{ url_for('static',filename='login.css')}} rel="stylesheet" type="text/css">
+    </head>
+    {% block body %}
+    {% if session['logged_in'] %}
+    You're logged in as <b>{{session['loggedinUser']}}. </b>
+    <a href='/logout'>Logout</a>
+
+    {% else %}
+
+    <div class ="login">
+      <div class="heading">
+    <h2>Sign in</h2>
+
+    <form action="/do_login" method="POST">
+      <div class="input-group input-group-lg">
+        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+        <input type="text" class="form-control" name="username" placeholder="Username">
+          </div>
+      <div class="input-group input-group-lg">
+          <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+          <input type="password" class="form-control" name="password" placeholder="Password">
+        </div>
+        <input type="submit" value = "Login"> </a>
+    </form>
+
+      </div>
+    </div>
+    {% endif %}
+
+    {% endblock %}
+</html>
+</html>

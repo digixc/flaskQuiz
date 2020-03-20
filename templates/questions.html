@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Bright Sparks!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+{% block content %}
+<form action="/score" method="POST">
+{% for question in questions %}
+
+<label>{{ question.question }} </label><br>
+{% for choice in question.options %}
+
+<input type="radio" name="userChoice['{{ question.id }}']" value="{{ choice.id }}"><label>{{ choice.choice }}</label>
+
+<br><br>
+{% endfor %}
+
+{% endfor %}
+<input type="submit" value = "Get My Score"> </a> <br>
+</form>
+<a href="/quiz"> Exit Quiz </a>
+
+
+{% endblock %}
+</html>
